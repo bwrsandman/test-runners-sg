@@ -21,5 +21,8 @@ jobs:
       - run: groups
       - run: sudo -u runner groups
       - run: newgrp lxd
+        if: always()
       - run: groups
+        if: always()
       - run: sg lxd -c groups
+        if: always()
