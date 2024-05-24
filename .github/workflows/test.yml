@@ -19,4 +19,6 @@ jobs:
       - run: sudo groupadd --force --system lxd
       - run: sudo usermod --append --groups lxd runner
       - run: groups
+      - run: newgrp lxd
+      - run: groups
       - run: sg lxd -c groups
