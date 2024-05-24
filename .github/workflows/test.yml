@@ -19,8 +19,7 @@ jobs:
       - run: sudo groupadd --force --system lxd
       - run: sudo usermod --append --groups lxd runner
       - run: groups
-      - run: |
-          echo "runner ALL=(ALL) NOPASSWD: /usr/sbin/sg" | sudo tee /etc/sudoers.d/runner-sg
+      - run: sudo -u runner groups
       - run: newgrp lxd
       - run: groups
       - run: sg lxd -c groups
