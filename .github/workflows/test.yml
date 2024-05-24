@@ -14,10 +14,9 @@ jobs:
           - ubuntu-22.04
           - ubuntu-24.04
     steps:
-      - run: |
-          whoami
-          groups
-          sudo groupadd --force --system lxd
-          sudo usermod --append --groups lxd runner
-          groups
-          sg lxd -c groups
+      - run: whoami
+      - run: groups
+      - run: sudo groupadd --force --system lxd
+      - run: sudo usermod --append --groups lxd runner
+      - run: groups
+      - run: sg lxd -c groups
