@@ -1,0 +1,23 @@
+name: Test sg
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  run:
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+          - ubuntu-20.04
+          - ubuntu-22.04
+          - ubuntu-24.04
+    steps:
+      - run: |
+          whoami
+          groups
+          sudo groupadd --force --system lxd
+          sudo usermod --append --groups lxd runner
+          groups
+          sg lxd -c groups
